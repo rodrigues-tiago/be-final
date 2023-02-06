@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "2b3d117a-29f3-4ddd-b862-95a489cc2382",
+		"name": "hello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1794950"
+	},
+	"item": [
+		{
+			"name": "my-hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-hello-with-content-type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hello/with-content-type",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hello",
+						"with-content-type"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

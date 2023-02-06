@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "315d66d5-fcc1-4e59-a4c9-0dba79a777d2",
+		"name": "health",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1794950"
+	},
+	"item": [
+		{
+			"name": "my-health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-helath-cached",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/health/cached",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"health",
+						"cached"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

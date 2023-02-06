@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "331be97d-9912-4bd0-9ed9-f3f0c700edbe",
+		"name": "restricted",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1794950"
+	},
+	"item": [
+		{
+			"name": "my-restricted",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/restricted",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"restricted"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

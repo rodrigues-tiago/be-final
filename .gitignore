@@ -1,0 +1,12 @@
+node_modules
+out
+.env
+.envrc
+.npmrc
+
+# editors
+.idea
+.vscode
+
+# mac
+.DS_store

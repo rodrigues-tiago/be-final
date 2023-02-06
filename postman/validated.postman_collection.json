@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "34a2ff2e-4e49-4b43-bb01-da06d1028a97",
+		"name": "validated",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1794950"
+	},
+	"item": [
+		{
+			"name": "my-validated",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "MY-HEADER-1",
+						"value": "edit",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/validated",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"validated"
+					],
+					"query": [
+						{
+							"key": "batata",
+							"value": "doce",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-validated-from-path",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/validated/from-path/jose/35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"validated",
+						"from-path",
+						"jose",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-validated-from-query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/validated/from-query?name=jose&age=35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"validated",
+						"from-query"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "jose"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-validated-from-headers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "name",
+						"value": "jose",
+						"type": "text"
+					},
+					{
+						"key": "age",
+						"value": "35",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/validated/from-headers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"validated",
+						"from-headers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-validated-from-payload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "jose",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "35",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/validated/from-payload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"validated",
+						"from-payload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-validated-from-payload Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"jose\",\n    \"age\": 35\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/validated/from-payload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"validated",
+						"from-payload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
