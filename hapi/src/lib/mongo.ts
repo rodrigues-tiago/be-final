@@ -8,13 +8,12 @@ import hapiMongo from 'hapi-mongodb'
 export default Object.freeze<Hapi.Plugin<void>>({
   name: 'mongo',
   version: '1.0.0',
-  register: async server => {
-
-    const usr = '--'
-    const pwd = '--'
+  register: async (server) => {
+    const usr = 'dbUser'
+    const pwd = 'MN98TCwfI59fa20N'
     const options: hapiMongo.Options = {
-      url: `mongodb+srv://${usr}:${pwd}@edit-backend-jan-2023.6j9py79.mongodb.net/sample_mflix?retryWrites=true&w=majority`,
-      settings: {useUnifiedTopology: true},
+      url: `mongodb+srv://${usr}:${pwd}@edit-backend-jan-2023.8crhgg0.mongodb.net/todos?retryWrites=true&w=majority`,
+      settings: { useUnifiedTopology: true },
       decorate: true,
     }
 
