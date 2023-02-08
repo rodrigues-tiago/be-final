@@ -10,9 +10,9 @@ export default Object.freeze<Hapi.Plugin<void>>({
   version: '1.0.0',
   register: async (server) => {
     const usr = 'dbUser'
-    const pwd = 'MN98TCwfI59fa20N'
+    const pwd = 'AS8WobdS2xCnjJ8A'
     const options: hapiMongo.Options = {
-      url: `mongodb+srv://${usr}:${pwd}@edit-backend-jan-2023.8crhgg0.mongodb.net/todos?retryWrites=true&w=majority`,
+      url: `mongodb+srv://${usr}:${pwd}@edit-backend-jan-2023.8crhgg0.mongodb.net/?retryWrites=true&w=majority`,
       settings: { useUnifiedTopology: true },
       decorate: true,
     }
