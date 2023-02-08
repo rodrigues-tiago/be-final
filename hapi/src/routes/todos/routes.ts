@@ -1,7 +1,7 @@
 // define as rotas
 
 import type { ServerRoute, Request } from '@hapi/hapi'
-import { getAll } from './service'
+import { Todo, getAll, getOne, create, update, remove, search } from './service'
 
 /**
  * Get all todos
@@ -13,9 +13,13 @@ const getAllTodos = Object.freeze<ServerRoute>({
   method: 'GET',
   path: '/',
   handler: (req, _h) => {
+    // get data from request
     const { mongo } = req
+    const offset = Number(req.query['offset']) ?? 0
+    const limit = Number(req.query['limit']) ?? 20
 
-    return getAll(mongo)
+    // call handler (request-agnostic)
+    return getAll(mongo, offset, limit)
   },
 })
 
@@ -23,8 +27,13 @@ const getAllTodos = Object.freeze<ServerRoute>({
 const getOneTodo = Object.freeze<ServerRoute>({
   method: 'GET',
   path: '/{id}',
-  handler: (req, h) => {
-    return 'Return a single todo'
+  handler: (req, _h) => {
+    // get data from request
+    const { mongo } = req
+    const { id } = req.params
+
+    // call handler (request-agnostic)
+    return getOne(mongo, id)
   },
 })
 
@@ -32,8 +41,14 @@ const getOneTodo = Object.freeze<ServerRoute>({
 const postTodo = Object.freeze<ServerRoute>({
   method: 'POST',
   path: '/',
-  handler: (req, h) => {
-    return 'Add new todo'
+  handler: async (req: Request<{ Payload: Todo }>, h) => {
+    // get data from request
+    const mongo = req.mongo
+    const todo = req.payload
+
+    // call handler (request-agnostic)
+    const res = await create(mongo, todo)
+    return h.response(res).code(201).header('location', `${req.url}/${res.insertedId}`)
   },
 })
 
@@ -41,8 +56,19 @@ const postTodo = Object.freeze<ServerRoute>({
 const putTodo = Object.freeze<ServerRoute>({
   method: 'PUT',
   path: '/{id}',
-  handler: (req, h) => {
-    return 'Update a single todo'
+  options: {
+    validate: {
+      payload: (v: unknown) => Todo.parseAsync(v),
+    },
+  },
+  handler: async (req: Request<{ Payload: Todo }>, _h) => {
+    // get data from request
+    const { mongo } = req
+    const { id } = req.params
+    const todo = req.payload
+
+    // call handler (request-agnostic)
+    return update(mongo, id, todo)
   },
 })
 
@@ -50,8 +76,13 @@ const putTodo = Object.freeze<ServerRoute>({
 const deleteTodo = Object.freeze<ServerRoute>({
   method: 'DELETE',
   path: '/{id}',
-  handler: (req, h) => {
-    return 'Delete a single todo'
+  handler: (req, _h) => {
+    // get data from request
+    const { mongo } = req
+    const { id } = req.params
+
+    // call handler (request-agnostic)
+    return remove(mongo, id)
   },
 })
 
@@ -60,7 +91,12 @@ const getSearch = Object.freeze<ServerRoute>({
   method: 'GET',
   path: '/search',
   handler: (req, h) => {
-    return 'Return search results for the specified term'
+    // get data from request
+    const { mongo } = req
+    const term = req.query.term
+
+    // call handler (request-agnostic)
+    return search(mongo, term)
   },
 })
 
