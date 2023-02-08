@@ -1,11 +1,6 @@
 import type { HapiMongo } from 'hapi-mongodb'
 import z from 'zod'
 
-// ID (gerado automaticamente pelo mongo)
-// description: string de 2 a 50 caracteres;
-// done: boolean;
-// dueDate: Date -- cuidado que as datas devem ser transformadas para poderem ser utilizadas em JSON
-
 export const Todo = z.object({
   description: z.string().min(2).max(50),
   done: z.boolean(),
@@ -13,7 +8,8 @@ export const Todo = z.object({
 })
 export type Todo = z.infer<typeof Todo>
 
-// By default, queries in MongoDB return all fields in matching documents. To limit the amount of data that MongoDB sends to applications, you can include a projection document to specify or restrict fields to return.
+// By default, queries in MongoDB return all fields in matching documents.
+// To limit the amount of data that MongoDB sends to applications, you can include a projection document to specify or restrict fields to return.
 const projection = Object.fromEntries(Object.keys(Todo.shape).map((k) => [k, 1]))
 
 export const getAll = (mongo: HapiMongo, offset: number, limit: number) =>

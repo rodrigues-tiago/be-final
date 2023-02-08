@@ -41,6 +41,11 @@ const getOneTodo = Object.freeze<ServerRoute>({
 const postTodo = Object.freeze<ServerRoute>({
   method: 'POST',
   path: '/',
+  options: {
+    validate: {
+      payload: (v: unknown) => Todo.parseAsync(v),
+    },
+  },
   handler: async (req: Request<{ Payload: Todo }>, h) => {
     // get data from request
     const mongo = req.mongo
