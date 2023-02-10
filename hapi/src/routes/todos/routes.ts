@@ -1,4 +1,4 @@
-// define as rotas
+// definir as rotas
 
 import type { ServerRoute, Request } from '@hapi/hapi'
 import { Todo, getAll, getOne, create, update, remove, search } from './service'
@@ -15,8 +15,8 @@ const getAllTodos = Object.freeze<ServerRoute>({
   handler: (req, _h) => {
     // get data from request
     const { mongo } = req
+    const limit = Number(req.query['limit']) ?? 5
     const offset = Number(req.query['offset']) ?? 0
-    const limit = Number(req.query['limit']) ?? 20
 
     // call handler (request-agnostic)
     return getAll(mongo, offset, limit)
@@ -53,7 +53,10 @@ const postTodo = Object.freeze<ServerRoute>({
 
     // call handler (request-agnostic)
     const res = await create(mongo, todo)
-    return h.response(res).code(201).header('location', `${req.url}/${res.insertedId}`)
+    return h
+      .response(res)
+      .code(201)
+      .header('location', `${req.url}/${res.insertedId}`)
   },
 })
 
@@ -95,7 +98,7 @@ const deleteTodo = Object.freeze<ServerRoute>({
 const getSearch = Object.freeze<ServerRoute>({
   method: 'GET',
   path: '/search',
-  handler: (req, h) => {
+  handler: (req, _h) => {
     // get data from request
     const { mongo } = req
     const term = req.query.term
@@ -108,4 +111,11 @@ const getSearch = Object.freeze<ServerRoute>({
 /**
  * Routes of the plugin `todos`
  */
-export default [getAllTodos, getOneTodo, postTodo, putTodo, deleteTodo, getSearch]
+export default [
+  getAllTodos,
+  getOneTodo,
+  postTodo,
+  putTodo,
+  deleteTodo,
+  getSearch,
+]

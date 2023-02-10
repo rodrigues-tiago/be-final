@@ -37,7 +37,7 @@
     "@types/hapi__hapi": "^20.0.13",
     "hapi-mongodb": "^10.0.3",
     "hapi-pino": "^11.0.1",
-    "tslib": "^2.4.1",
+    "tslib": "^2.5.0",
     "zod": "^3.20.5"
   },
   "devDependencies": {
